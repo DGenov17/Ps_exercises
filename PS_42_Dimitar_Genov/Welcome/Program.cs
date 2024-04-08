@@ -8,6 +8,11 @@ namespace Welcome
     {
         static void Main(string[] args)
         {
+            Exercise1();
+        }
+
+        public static void Exercise1()
+        {
             User user = new User();
 
             user.Name = "Test";
