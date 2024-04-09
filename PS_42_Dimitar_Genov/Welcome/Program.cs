@@ -13,14 +13,13 @@ namespace Welcome
 
         public static void Exercise1()
         {
-            User user = new User();
-
-            user.Name = "Test";
-            user.Password = "test password";
-            user.Role = Others.UserRolesEnum.ADMIN;
-
+            User user = new User()
+            {
+                Name = "Test",
+                Password = "test password",
+                Role = Others.UserRolesEnum.ADMIN
+            };
             UserViewModel userViewModel = new UserViewModel(user);
-
             UserView userView = new UserView(userViewModel);
             userView.Display();
         }

@@ -1,7 +1,10 @@
-﻿using Welcome.Model;
+﻿using System.ComponentModel.DataAnnotations;
+using Welcome.Model;
 using Welcome.Others;
 using Welcome.View;
 using Welcome.ViewModel;
+using WelcomeExtended.Data;
+using WelcomeExtended.Helpers;
 using WelcomeExtended.Others;
 
 namespace WelcomeExtended
@@ -10,7 +13,8 @@ namespace WelcomeExtended
     {
         static void Main(string[] args)
         {
-            Exercise2();
+            // Exercise2();
+            Exercise3();
         }
 
         public static void Exercise2()
@@ -39,6 +43,30 @@ namespace WelcomeExtended
             finally
             {
                 Console.WriteLine("Executed in any case!");
+            }
+        }
+
+        public static void Exercise3()
+        {
+            var userData = new UserData();
+            userData.PopulateUserData();
+
+            Console.WriteLine("Enter credentials:");
+            Console.Write("name: ");
+            var enteredName = Console.ReadLine();
+            Console.Write("password: ");
+            var eneteredPassword = Console.ReadLine();
+
+            var validationResult = userData.ValidateCredentials(enteredName, eneteredPassword);
+
+            if(validationResult == false)
+            {
+                Console.WriteLine("Credentials validation failed");
+            }
+            else
+            {
+               var result = userData.GetUserHelper(enteredName, eneteredPassword).ToStringHelper();
+               Console.WriteLine(result);
             }
         }
     }
